@@ -2,19 +2,21 @@ import React from 'react';
 import './Coins.css';
 
 const CoinItem = (props) => {
+    const coin = props.coins;
+
     return (
         <div className='coin-row'>
-            <p>{props.coins.market_cap_rank}</p>
+            <p>{coin.market_cap_rank}</p>
             <div className='img-symbol'>
-                <img src={props.coins.image} alt='' />
-                <p>{props.coins.symbol.toUpperCase()}</p>
+                <img src={coin.image} alt='' />
+                <p>{coin.symbol.toUpperCase()}</p>
             </div>
-            <p>₹{props.coins.current_price.toLocaleString()}</p>
-            <p>{props.coins.price_change_percentage_24h.toFixed(2)}%</p>
-            <p className='hide-mobile'>₹{props.coins.total_volume.toLocaleString()}</p>
-            <p className='hide-mobile'>₹{props.coins.market_cap.toLocaleString()}</p>
+            <p>₹{coin.current_price?.toLocaleString() || 'N/A'}</p>
+            <p>{coin.price_change_percentage_24h?.toFixed(2) || '0.00'}%</p>
+            <p className='hide-mobile'>₹{coin.total_volume?.toLocaleString() || 'N/A'}</p>
+            <p className='hide-mobile'>₹{coin.market_cap?.toLocaleString() || 'N/A'}</p>
         </div>
-    )
+    );
 }
 
 export default CoinItem;
